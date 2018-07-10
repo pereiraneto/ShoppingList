@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from @angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Item } from '../../models/Item/item.model';
@@ -17,6 +17,14 @@ export class ShoppingListProvider {
 
   addItem(item: Item){
     return this.shoppingListRef.push(item);
+  }
+
+  editItem(item: Item){
+    return this.shoppingListRef.update(item.key, item);
+  }
+
+  removeItem(item: Item){
+    return this.shoppingListRef.remove(item.key);
   }
 
 }
